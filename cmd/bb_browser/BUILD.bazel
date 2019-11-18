@@ -38,7 +38,7 @@ go_binary(
     name = "bb_browser",
     embed = [":go_default_library"],
     pure = "on",
-    visibility = ["//visibility:private"],
+    visibility = ["//visibility:public"],
 )
 
 container_layer(
@@ -66,4 +66,10 @@ container_push_official(
     name = "bb_browser_container_push",
     component = "bb-browser",
     image = ":bb_browser_container",
+)
+
+filegroup(
+    name = "templates_and_assets",
+    srcs = glob(["templates/*", "assets/*"]),
+    visibility = ["//visibility:public"],
 )
